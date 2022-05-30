@@ -20,7 +20,7 @@ public class Exercise {
     }
     
     public Exercise(String name, int reps, int sets, double weight, String note) {
-        this.id = UUID.randomUUID()
+        this.id = UUID.randomUUID();
         this.name = name;
         this.reps = reps;
         this.sets = sets;
@@ -31,7 +31,6 @@ public class Exercise {
     public UUID getId() {
         return id;
     }
-
 
     public String getName() {
         return name;

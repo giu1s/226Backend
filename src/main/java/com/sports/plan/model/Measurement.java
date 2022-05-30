@@ -36,7 +36,7 @@ public class Measurement {
         this.hips = hips;
     }
     public UUID getId() {
-        return Id;
+        return id;
     }
   
     public Date getDate() {
