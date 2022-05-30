@@ -1,7 +1,5 @@
 package com.sports.plan.model;
 
-import java.util.Date;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,21 +7,23 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Exercise {
     @Id
     private long id;
-    private String firtname;
-    private String lastname;
-    private Date birthdate;
-    private double height;
-    
+    private String name;
+    private int reps;
+    private int sets;
+    private double weight;
+    private String note;
+
     public Exercise(){
 
     }
-
-    public Exercise(long id, String firtname, String lastname, Date birthdate, double height) {
+    
+    public Exercise(long id, String name, int reps, int sets, double weight, String note) {
         this.id = id;
-        this.firtname = firtname;
-        this.lastname = lastname;
-        this.birthdate = birthdate;
-        this.height = height;
+        this.name = name;
+        this.reps = reps;
+        this.sets = sets;
+        this.weight = weight;
+        this.note = note;
     }
 
     public long getId() {
@@ -34,38 +34,48 @@ public class Exercise {
         this.id = id;
     }
 
-    public String getFirtname() {
-        return firtname;
+    public String getName() {
+        return name;
     }
 
-    public void setFirtname(String firtname) {
-        this.firtname = firtname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public int getReps() {
+        return reps;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setReps(int reps) {
+        this.reps = reps;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public int getSets() {
+        return sets;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setSets(int sets) {
+        this.sets = sets;
     }
 
-    public double getHeight() {
-        return height;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+
+    
 
 
     
