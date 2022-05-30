@@ -1,12 +1,14 @@
 package com.sports.plan.model;
 
+import java.util.UUID;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("exercise")
 public class Exercise {
     @Id
-    private long id;
+    private UUID id;
     private String name;
     private int reps;
     private int sets;
@@ -17,8 +19,8 @@ public class Exercise {
 
     }
     
-    public Exercise(long id, String name, int reps, int sets, double weight, String note) {
-        this.id = id;
+    public Exercise(String name, int reps, int sets, double weight, String note) {
+        this.id = UUID.randomUUID()
         this.name = name;
         this.reps = reps;
         this.sets = sets;
@@ -26,13 +28,10 @@ public class Exercise {
         this.note = note;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

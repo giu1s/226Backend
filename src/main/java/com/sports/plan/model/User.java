@@ -1,38 +1,35 @@
 package com.sports.plan.model;
 
-import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("user")
+@Document(collection = "user")
 public class User {
     @Id
-    private long id;
+    private UUID id;
     private String firtname;
     private String lastname;
-    private Date birthdate;
+    private String birthdate;
     private double height;
     
     public User(){
 
     }
 
-    public User(long id, String firtname, String lastname, Date birthdate, double height) {
-        this.id = id;
+    public User(String firtname, String lastname, String birthdate, double height) {
+        this.id = UUID.randomUUID();
         this.firtname = firtname;
         this.lastname = lastname;
         this.birthdate = birthdate;
         this.height = height;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getFirtname() {
         return firtname;
@@ -50,11 +47,11 @@ public class User {
         this.lastname = lastname;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 

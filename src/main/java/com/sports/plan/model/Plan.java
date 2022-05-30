@@ -1,6 +1,7 @@
 package com.sports.plan.model;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Plan {
 
     @Id
-    private long id;
+    private UUID id;
     private String name;
     private ArrayList<Exercise> exercises;
     private String note;
@@ -19,19 +20,15 @@ public class Plan {
 
     }
 
-    public Plan(long id, String name, ArrayList<Exercise> exercises, String note) {
-        this.id = id;
+    public Plan(String name, ArrayList<Exercise> exercises, String note) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.exercises = exercises;
         this.note = note;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
