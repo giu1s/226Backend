@@ -1,14 +1,19 @@
 package com.sports.plan.model;
 
-import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
 public class User {
+
+    
+    @Transient
+    public static final String SEQUENCE_NAME = "users_sequence";
+    
     @Id
-    private UUID id;
+    private long id;
     private String firtname;
     private String lastname;
     private String birthdate;
@@ -19,17 +24,19 @@ public class User {
     }
 
     public User(String firtname, String lastname, String birthdate, double height) {
-        this.id = UUID.randomUUID();
         this.firtname = firtname;
         this.lastname = lastname;
         this.birthdate = birthdate;
         this.height = height;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
+    public void setId(long id){
+        this.id = id;
+    }
 
     public String getFirtname() {
         return firtname;

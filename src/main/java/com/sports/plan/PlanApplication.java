@@ -1,7 +1,5 @@
 package com.sports.plan;
 
-import com.sports.plan.controller.UserController;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;

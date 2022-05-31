@@ -3,16 +3,20 @@ package com.sports.plan.model;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
-import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 
 @Document("measurement")
 public class Measurement {
 
+  
+    @Transient
+    public static final String SEQUENCE_NAME = "measurements_sequence";
+    
     @Id
-    private UUID id;
+    private long id;
     private Date date;
     private double weight;
     private double bodyFat;
@@ -26,7 +30,6 @@ public class Measurement {
     }
     public Measurement( Date date, double weight, double bodyFat, double waist, double belly, double chest,
             double hips) {
-        this.id = UUID.randomUUID();
         this.date = date;
         this.weight = weight;
         this.bodyFat = bodyFat;
@@ -35,8 +38,12 @@ public class Measurement {
         this.chest = chest;
         this.hips = hips;
     }
-    public UUID getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id){
+        this.id = id;
     }
   
     public Date getDate() {
