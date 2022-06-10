@@ -88,7 +88,4 @@ public class Measurement {
     public void setHips(double hips) {
         this.hips = hips;
     }
-
-
-
 }
