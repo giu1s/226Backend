@@ -45,7 +45,7 @@ public class PlanController {
      */
     @PostMapping("/Plan")
     public ResponseEntity<Plan> createPlan(@RequestBody Plan newPlan){
-        newPlan.setId(sequenceGenerator.generateSequence(Plan.SEQUENCE_NAME));
+        newPlan.setId();
         Plan savedPlan = PlanRepository.insert(newPlan);
         if ( savedPlan == null ){
             throw new RuntimeException("Coulnd't create Plan");
