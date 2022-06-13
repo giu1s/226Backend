@@ -1,6 +1,7 @@
 package com.sports.plan.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.sports.plan.generator.SequenceGeneratorService;
 import com.sports.plan.model.User;
@@ -34,10 +35,18 @@ public class UserController {
      * @return all user
      */
     @GetMapping("/allusers")
-    public List<User> getUser(){
+    public List<User> getAllUser(){
         return userRepository.findAll();
     }
 
+    /**
+     * @return  user by id
+     */
+    @GetMapping("/user/{id}")
+    public ResponseEntity<User> getUser(@PathVariable(value = "id") long id){
+        return new ResponseEntity<User>(userRepository.findById(id).get(), HttpStatus.OK);
+    }
+    
     /**
      * create user
      * @param newUser created user

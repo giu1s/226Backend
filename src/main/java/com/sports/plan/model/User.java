@@ -18,7 +18,7 @@ public class User {
     
     @Id
     private long id;
-    private String firtname;
+    private String firstname;
     private String lastname;
     private String birthdate;
     private double height;
@@ -27,9 +27,9 @@ public class User {
 
     }
 
-    public User(String firtname, String lastname, String birthdate, double height) {
+    public User(String firstname, String lastname, String birthdate, double height) {
         this.setId();
-        this.firtname = firtname;
+        this.firstname = firstname;
         this.lastname = lastname;
         this.birthdate = birthdate;
         this.height = height;
@@ -43,12 +43,12 @@ public class User {
         this.id = SequenceGeneratorService.generateSequence(User.SEQUENCE_NAME);
     }
 
-    public String getFirtname() {
-        return firtname;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirtname(String firtname) {
-        this.firtname = firtname;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getLastname() {
