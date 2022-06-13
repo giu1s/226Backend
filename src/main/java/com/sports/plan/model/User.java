@@ -11,8 +11,7 @@ import com.sports.plan.generator.SequenceGeneratorService;
 @Document(collection = "user")
 public class User {
     
-    @Autowired
-    SequenceGeneratorService sequenceGenerator;
+    
     
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
@@ -41,7 +40,7 @@ public class User {
     }
 
     public void setId(){
-        this.id = sequenceGenerator.generateSequence(SEQUENCE_NAME);
+        this.id = SequenceGeneratorService.generateSequence(User.SEQUENCE_NAME);
     }
 
     public String getFirtname() {
