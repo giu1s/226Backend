@@ -43,7 +43,7 @@ public class ExerciseController {
      * @param newExercise created Exercise
      * @return 
      */
-    @PostMapping("/Exercise")
+    @PostMapping("/exercise")
     public ResponseEntity<Exercise> createExercise(@RequestBody Exercise newExercise){
         newExercise.setId();
         Exercise savedExercise = exerciseRepository.insert(newExercise);
@@ -58,7 +58,7 @@ public class ExerciseController {
      * @param newExercise Exercise with new values
      * @return  
      */
-    @PutMapping("/Exercise")
+    @PutMapping("/exercise")
     public ResponseEntity<Exercise> updateExercise(@RequestBody Exercise newExercise){
        Exercise updatedExercise = exerciseRepository.save(newExercise);
        if ( updatedExercise == null ){
@@ -72,7 +72,7 @@ public class ExerciseController {
      * @param id
      * @return
      */
-    @DeleteMapping("/Exercise/{id}")
+    @DeleteMapping("/exercise/{id}")
     public ResponseEntity<Exercise> deleteExercise(@PathVariable(value = "id") long id){
        exerciseRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);

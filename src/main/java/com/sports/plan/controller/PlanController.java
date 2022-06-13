@@ -43,7 +43,7 @@ public class PlanController {
      * @param newPlan created Plan
      * @return 
      */
-    @PostMapping("/Plan")
+    @PostMapping("/plan")
     public ResponseEntity<Plan> createPlan(@RequestBody Plan newPlan){
         newPlan.setId();
         Plan savedPlan = PlanRepository.insert(newPlan);
@@ -58,7 +58,7 @@ public class PlanController {
      * @param newPlan Plan with new values
      * @return  
      */
-    @PutMapping("/Plan")
+    @PutMapping("/plan")
     public ResponseEntity<Plan> updatePlan(@RequestBody Plan newPlan){
        Plan updatedPlan = PlanRepository.save(newPlan);
        if ( updatedPlan == null ){
@@ -72,7 +72,7 @@ public class PlanController {
      * @param id
      * @return
      */
-    @DeleteMapping("/Plan/{id}")
+    @DeleteMapping("/plan/{id}")
     public ResponseEntity<Plan> deletePlan(@PathVariable(value = "id") long id){
        PlanRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
