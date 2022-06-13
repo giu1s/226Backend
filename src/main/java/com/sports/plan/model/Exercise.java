@@ -78,9 +78,6 @@ public class Exercise {
         this.note = note;
     }
 
-
-    
-
-
-    
+    public void setId(long generateSequence) {
+    }
 }
