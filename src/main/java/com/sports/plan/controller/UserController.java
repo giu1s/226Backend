@@ -1,8 +1,6 @@
 package com.sports.plan.controller;
 
 import java.util.List;
-import java.util.Optional;
-
 import com.sports.plan.generator.SequenceGeneratorService;
 import com.sports.plan.model.User;
 import com.sports.plan.repositories.UserRepository;

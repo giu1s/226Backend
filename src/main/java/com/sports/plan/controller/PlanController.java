@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api")
 public class PlanController {
     @Autowired
-    PlanRepository PlanRepository;
+    PlanRepository planRepository;
 
     @Autowired
     SequenceGeneratorService sequenceGenerator;
@@ -35,7 +35,15 @@ public class PlanController {
      */
     @GetMapping("/allPlans")
     public List<Plan> getPlan(){
-        return PlanRepository.findAll();
+        return planRepository.findAll();
+    }
+
+    /**
+     * @return  Plan by id
+     */
+    @GetMapping("/plan/{id}")
+    public ResponseEntity<Plan> getUser(@PathVariable(value = "id") long id){
+        return new ResponseEntity<Plan>(planRepository.findById(id).get(), HttpStatus.OK);
     }
 
     /**
@@ -46,7 +54,7 @@ public class PlanController {
     @PostMapping("/plan")
     public ResponseEntity<Plan> createPlan(@RequestBody Plan newPlan){
         newPlan.setId();
-        Plan savedPlan = PlanRepository.insert(newPlan);
+        Plan savedPlan = planRepository.insert(newPlan);
         if ( savedPlan == null ){
             throw new RuntimeException("Coulnd't create Plan");
         }
@@ -60,7 +68,7 @@ public class PlanController {
      */
     @PutMapping("/plan")
     public ResponseEntity<Plan> updatePlan(@RequestBody Plan newPlan){
-       Plan updatedPlan = PlanRepository.save(newPlan);
+       Plan updatedPlan = planRepository.save(newPlan);
        if ( updatedPlan == null ){
         throw new RuntimeException("Coulnd't create Plan");
         }
@@ -74,7 +82,7 @@ public class PlanController {
      */
     @DeleteMapping("/plan/{id}")
     public ResponseEntity<Plan> deletePlan(@PathVariable(value = "id") long id){
-       PlanRepository.deleteById(id);
+       planRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

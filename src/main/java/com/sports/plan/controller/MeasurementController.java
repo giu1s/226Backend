@@ -40,6 +40,14 @@ public class MeasurementController {
         return measurementRepository.findAll();
     }
 
+    /**
+     * @return  Measurement by id
+     */
+    @GetMapping("/measurement/{id}")
+    public ResponseEntity<Measurement> getUser(@PathVariable(value = "id") long id){
+        return new ResponseEntity<Measurement>(measurementRepository.findById(id).get(), HttpStatus.OK);
+    }
+
      /**
      * create Measurement
      * @param newMeasurement created measurement

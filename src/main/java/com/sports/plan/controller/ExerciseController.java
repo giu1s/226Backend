@@ -34,20 +34,29 @@ public class ExerciseController {
      * @return all Exercise
      */
     @GetMapping("/allExercises")
-    public List<Exercise> getExercise(){
+    public List<Exercise> getExercise() {
         return exerciseRepository.findAll();
     }
 
     /**
+     * @return Exercise by id
+     */
+    @GetMapping("/exercise/{id}")
+    public ResponseEntity<Exercise> getUser(@PathVariable(value = "id") long id) {
+        return new ResponseEntity<Exercise>(exerciseRepository.findById(id).get(), HttpStatus.OK);
+    }
+
+    /**
      * create Exercise
+     * 
      * @param newExercise created Exercise
-     * @return 
+     * @return
      */
     @PostMapping("/exercise")
-    public ResponseEntity<Exercise> createExercise(@RequestBody Exercise newExercise){
+    public ResponseEntity<Exercise> createExercise(@RequestBody Exercise newExercise) {
         newExercise.setId();
         Exercise savedExercise = exerciseRepository.insert(newExercise);
-        if ( savedExercise == null ){
+        if (savedExercise == null) {
             throw new RuntimeException("Coulnd't create Exercise");
         }
         return new ResponseEntity<>(savedExercise, HttpStatus.OK);
@@ -55,26 +64,28 @@ public class ExerciseController {
 
     /**
      * update Exercise
+     * 
      * @param newExercise Exercise with new values
-     * @return  
+     * @return
      */
     @PutMapping("/exercise")
-    public ResponseEntity<Exercise> updateExercise(@RequestBody Exercise newExercise){
-       Exercise updatedExercise = exerciseRepository.save(newExercise);
-       if ( updatedExercise == null ){
-        throw new RuntimeException("Coulnd't create Exercise");
+    public ResponseEntity<Exercise> updateExercise(@RequestBody Exercise newExercise) {
+        Exercise updatedExercise = exerciseRepository.save(newExercise);
+        if (updatedExercise == null) {
+            throw new RuntimeException("Coulnd't create Exercise");
         }
         return new ResponseEntity<>(updatedExercise, HttpStatus.OK);
     }
 
     /**
      * delete Exercise
+     * 
      * @param id
      * @return
      */
     @DeleteMapping("/exercise/{id}")
-    public ResponseEntity<Exercise> deleteExercise(@PathVariable(value = "id") long id){
-       exerciseRepository.deleteById(id);
+    public ResponseEntity<Exercise> deleteExercise(@PathVariable(value = "id") long id) {
+        exerciseRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
