@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @CrossOrigin
 @RestController
+@RequestMapping(value = "/api")
 public class MeasurementController {
     
 
@@ -33,7 +35,7 @@ public class MeasurementController {
     /**
      * @return all Measurement
      */
-    @GetMapping("/api/allMeasurement")
+    @GetMapping("/allMeasurement")
     public List<Measurement> getMeasurement(){
         return measurementRepository.findAll();
     }

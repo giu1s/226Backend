@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @CrossOrigin
 @RestController
+@RequestMapping(value = "/api")
 public class PlanController {
     @Autowired
     PlanRepository PlanRepository;
@@ -31,7 +33,7 @@ public class PlanController {
     /**
      * @return all Plan
      */
-    @GetMapping("/api/allPlans")
+    @GetMapping("/allPlans")
     public List<Plan> getPlan(){
         return PlanRepository.findAll();
     }
