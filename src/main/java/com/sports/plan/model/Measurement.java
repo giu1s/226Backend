@@ -2,8 +2,11 @@ package com.sports.plan.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.sports.plan.generator.SequenceGeneratorService;
+
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 
@@ -11,7 +14,9 @@ import org.springframework.data.annotation.Transient;
 @Document("measurement")
 public class Measurement {
 
-  
+    @Autowired
+    SequenceGeneratorService sequenceGenerator;
+
     @Transient
     public static final String SEQUENCE_NAME = "measurements_sequence";
     
@@ -30,6 +35,7 @@ public class Measurement {
     }
     public Measurement( Date date, double weight, double bodyFat, double waist, double belly, double chest,
             double hips) {
+        this.setId();
         this.date = date;
         this.weight = weight;
         this.bodyFat = bodyFat;
@@ -42,8 +48,8 @@ public class Measurement {
         return id;
     }
 
-    public void setId(long id){
-        this.id = id;
+    public void setId(){
+        this.id = sequenceGenerator.generateSequence(SEQUENCE_NAME);
     }
   
     public Date getDate() {

@@ -47,7 +47,7 @@ public class MeasurementController {
      */
     @PostMapping("/measurement")
     public ResponseEntity<Measurement> createUser(@RequestBody Measurement newMeasurement){
-        newMeasurement.setId(sequenceGenerator.generateSequence(Measurement.SEQUENCE_NAME));
+        newMeasurement.setId();
         Measurement savedUser = measurementRepository.insert(newMeasurement);
         if ( savedUser == null ){
             throw new RuntimeException("Coulnd't create user");

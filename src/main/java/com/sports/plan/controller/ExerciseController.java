@@ -45,7 +45,7 @@ public class ExerciseController {
      */
     @PostMapping("/Exercise")
     public ResponseEntity<Exercise> createExercise(@RequestBody Exercise newExercise){
-        newExercise.setId(sequenceGenerator.generateSequence(Exercise.SEQUENCE_NAME));
+        newExercise.setId();
         Exercise savedExercise = exerciseRepository.insert(newExercise);
         if ( savedExercise == null ){
             throw new RuntimeException("Coulnd't create Exercise");
