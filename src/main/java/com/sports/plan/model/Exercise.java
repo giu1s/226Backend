@@ -4,8 +4,15 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.sports.plan.generator.SequenceGeneratorService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Document("exercise")
 public class Exercise {
+    
+    @Autowired
+    SequenceGeneratorService sequenceGenerator;
 
     @Transient
     public static final String SEQUENCE_NAME = "exercises_sequence";
@@ -23,6 +30,7 @@ public class Exercise {
     }
     
     public Exercise(String name, int reps, int sets, double weight, String note) {
+        this.setId();
         this.name = name;
         this.reps = reps;
         this.sets = sets;
@@ -35,7 +43,7 @@ public class Exercise {
     }
 
     public void setId(){
-        this.id = id;
+        this.id = sequenceGenerator.generateSequence(SEQUENCE_NAME);
     }
 
     public String getName() {
