@@ -1,13 +1,18 @@
 package com.sports.plan.model;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.sports.plan.generator.SequenceGeneratorService;
+
 @Document(collection = "user")
 public class User {
-
+    
+    @Autowired
+    SequenceGeneratorService sequenceGenerator;
     
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
@@ -24,6 +29,7 @@ public class User {
     }
 
     public User(String firtname, String lastname, String birthdate, double height) {
+        this.setId();
         this.firtname = firtname;
         this.lastname = lastname;
         this.birthdate = birthdate;
@@ -34,8 +40,8 @@ public class User {
         return id;
     }
 
-    public void setId(long id){
-        this.id = id;
+    public void setId(){
+        this.id = sequenceGenerator.generateSequence(SEQUENCE_NAME);
     }
 
     public String getFirtname() {

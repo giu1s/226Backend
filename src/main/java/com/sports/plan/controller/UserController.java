@@ -45,7 +45,7 @@ public class UserController {
      */
     @PostMapping("/user")
     public ResponseEntity<User> createUser(@RequestBody User newUser){
-        newUser.setId(sequenceGenerator.generateSequence(User.SEQUENCE_NAME));
+        newUser.setId();
         User savedUser = userRepository.insert(newUser);
         if ( savedUser == null ){
             throw new RuntimeException("Coulnd't create user");
