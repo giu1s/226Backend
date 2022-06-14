@@ -35,8 +35,8 @@ public class MeasurementController {
     /**
      * @return all Measurement
      */
-    @GetMapping("/allMeasurement")
-    public List<Measurement> getMeasurement(){
+    @GetMapping("/allmeasurement")
+    public List<Measurement> getAllMeasurements(){
         return measurementRepository.findAll();
     }
 
@@ -44,7 +44,7 @@ public class MeasurementController {
      * @return  Measurement by id
      */
     @GetMapping("/measurement/{id}")
-    public ResponseEntity<Measurement> getUser(@PathVariable(value = "id") long id){
+    public ResponseEntity<Measurement> getMeasurement(@PathVariable(value = "id") long id){
         return new ResponseEntity<Measurement>(measurementRepository.findById(id).get(), HttpStatus.OK);
     }
 
@@ -54,13 +54,13 @@ public class MeasurementController {
      * @return 
      */
     @PostMapping("/measurement")
-    public ResponseEntity<Measurement> createUser(@RequestBody Measurement newMeasurement){
+    public ResponseEntity<Measurement> createMeasurement(@RequestBody Measurement newMeasurement){
         newMeasurement.setId();
-        Measurement savedUser = measurementRepository.insert(newMeasurement);
-        if ( savedUser == null ){
+        Measurement savedMeasurement = measurementRepository.insert(newMeasurement);
+        if ( savedMeasurement == null ){
             throw new RuntimeException("Coulnd't create user");
         }
-        return new ResponseEntity<>(savedUser, HttpStatus.OK);
+        return new ResponseEntity<>(savedMeasurement, HttpStatus.OK);
     }
 
     /**
@@ -69,7 +69,7 @@ public class MeasurementController {
      * @return  
      */
     @PutMapping("/measurement")
-    public ResponseEntity<Measurement> updateUser(@RequestBody Measurement newMeasurement){
+    public ResponseEntity<Measurement> updateMeasurement(@RequestBody Measurement newMeasurement){
         Measurement updatedMeasurement = measurementRepository.save(newMeasurement);
        if ( updatedMeasurement == null ){
         throw new RuntimeException("Coulnd't create measurement");
@@ -82,7 +82,7 @@ public class MeasurementController {
      * @return
      */
     @DeleteMapping("/measurement/{id}")
-    public ResponseEntity<Measurement> deleteUser(@PathVariable(value = "id") long id){
+    public ResponseEntity<Measurement> deleteMeasurement(@PathVariable(value = "id") long id){
         measurementRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

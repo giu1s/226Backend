@@ -33,8 +33,8 @@ public class ExerciseController {
     /**
      * @return all Exercise
      */
-    @GetMapping("/allExercises")
-    public List<Exercise> getExercise() {
+    @GetMapping("/allexercises")
+    public List<Exercise> getAllExercises() {
         return exerciseRepository.findAll();
     }
 
@@ -42,7 +42,7 @@ public class ExerciseController {
      * @return Exercise by id
      */
     @GetMapping("/exercise/{id}")
-    public ResponseEntity<Exercise> getUser(@PathVariable(value = "id") long id) {
+    public ResponseEntity<Exercise> getExercise(@PathVariable(value = "id") long id) {
         return new ResponseEntity<Exercise>(exerciseRepository.findById(id).get(), HttpStatus.OK);
     }
 
