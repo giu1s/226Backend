@@ -22,7 +22,7 @@ public class Measurement {
     
     @Id
     private long id;
-    private Date date;
+    private String date;
     private double weight;
     private double bodyFat;
     private double waist;
@@ -33,7 +33,7 @@ public class Measurement {
     public Measurement(){
 
     }
-    public Measurement( Date date, double weight, double bodyFat, double waist, double belly, double chest,
+    public Measurement( String date, double weight, double bodyFat, double waist, double belly, double chest,
             double hips) {
         this.setId();
         this.date = date;
@@ -52,10 +52,10 @@ public class Measurement {
         this.id = sequenceGenerator.generateSequence(SEQUENCE_NAME);
     }
   
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
     public double getWeight() {

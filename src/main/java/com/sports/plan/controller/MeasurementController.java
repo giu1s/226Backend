@@ -35,7 +35,7 @@ public class MeasurementController {
     /**
      * @return all Measurement
      */
-    @GetMapping("/allmeasurement")
+    @GetMapping("/allmeasurements")
     public List<Measurement> getAllMeasurements(){
         return measurementRepository.findAll();
     }

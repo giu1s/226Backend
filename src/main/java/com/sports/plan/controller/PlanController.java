@@ -33,8 +33,8 @@ public class PlanController {
     /**
      * @return all Plan
      */
-    @GetMapping("/allPlans")
-    public List<Plan> getPlan(){
+    @GetMapping("/allplans")
+    public List<Plan> getAllPlans(){
         return planRepository.findAll();
     }
 
@@ -42,7 +42,7 @@ public class PlanController {
      * @return  Plan by id
      */
     @GetMapping("/plan/{id}")
-    public ResponseEntity<Plan> getUser(@PathVariable(value = "id") long id){
+    public ResponseEntity<Plan> getPlan(@PathVariable(value = "id") long id){
         return new ResponseEntity<Plan>(planRepository.findById(id).get(), HttpStatus.OK);
     }
 
